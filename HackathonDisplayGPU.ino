@@ -40,6 +40,17 @@ void receiveEvent (int howMany)
       co = cb1 << 8 | cb2;
       matrix.drawPixel(x, y, co);
   }
+  else if(c == 'l' && howMany == 7) { // circle
+      int x0, y0, x1, y1, cb1, cb2, co;
+      x0 = Wire.read();
+      y0 = Wire.read();
+      x1 = Wire.read();
+      y1 = Wire.read();
+      cb1 = Wire.read(); // high color byte
+      cb2 = Wire.read(); // low color byte
+      co = cb1 << 8 | cb2;
+      matrix.drawLine(x0, y0, x1, y1, co);
+  }
   else if(c == 'C' && howMany == 6) { // circle
       int x, y, r, cb1, cb2, co;
       x = Wire.read();
